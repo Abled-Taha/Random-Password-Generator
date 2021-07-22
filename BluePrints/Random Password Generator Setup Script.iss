@@ -40,9 +40,9 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [Files]
 Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\Random Password Generator.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\Include\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\PyQt5\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\Files\*"; DestDir: "{app}\Files"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\Include\*"; DestDir: "{app}\Include"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\PyQt5\*"; DestDir: "{app}\PyQt5"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\_asyncio.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\_bz2.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random Password Generator Python\Scripts\dist\Random Password Generator\_ctypes.pyd"; DestDir: "{app}"; Flags: ignoreversion
