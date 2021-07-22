@@ -1,0 +1,7 @@
+__pycache__
+temp*
+Accounts
+build
+dist
+*.spec
+Output
