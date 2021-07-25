@@ -271,13 +271,12 @@ class MainApp(QMainWindow):
         # Initializing Main Window
         self.setWindowTitle("Random Password Generator")
         self.setWindowIcon(QIcon("Files/icon.png"))
-        self.resize(271, 364) #Width, Height
+        self.resize(271, 364) # width, height
 
         # Initializing Scroll Area
         self.scroll = QScrollArea()
         self.widget = QWidget()
         self.vbox = QVBoxLayout()
-        # self.vbox.addStretch(10)
 
         self.widget.setLayout(self.vbox)
         self.scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -290,16 +289,7 @@ class MainApp(QMainWindow):
         self.Icon = QIcon()
         self.Icon.addPixmap(QPixmap("Files/icon.png"), QIcon.Mode.Normal, QIcon.State.Off)
 
-        # Initializing Font
-        self.headingFont = QFont()
-        self.headingFont.setFamily("Arial Black")
-        self.headingFont.setPointSize(19)
-        self.headingFont.setBold(True)
-        self.headingFont.setUnderline(False)
-        self.headingFont.setWeight(75)
-
     def initializeUI(self):
-
         # Initializing Password Buttons
         self.keyCount, self.keyList = Functions.Details(username)
         for i in range(0, self.keyCount):
@@ -354,19 +344,11 @@ class CreateNewApp(QMainWindow):
         # Initializing Main Window
         self.setWindowTitle("Random Password Generator - Create New Password")
         self.setWindowIcon(QIcon("Files/icon.png"))
-        self.resize(271, 364) #Width, Height
+        self.resize(271, 364) # width, height
 
         # Initializing Icon
         self.Icon = QIcon()
         self.Icon.addPixmap(QPixmap("Files/icon.png"), QIcon.Mode.Normal, QIcon.State.Off)
-
-        # Initializing Font
-        self.headingFont = QFont()
-        self.headingFont.setFamily("Arial Black")
-        self.headingFont.setPointSize(19)
-        self.headingFont.setBold(True)
-        self.headingFont.setUnderline(False)
-        self.headingFont.setWeight(75)
 
     def initializeUI(self):
         # Initializing Buttons
@@ -486,14 +468,6 @@ class DeleteApp(QMainWindow):
         # Initializing Icon
         self.Icon = QIcon()
         self.Icon.addPixmap(QPixmap("Files/icon.png"), QIcon.Mode.Normal, QIcon.State.Off)
-
-        # Initializing Font
-        self.headingFont = QFont()
-        self.headingFont.setFamily("Arial Black")
-        self.headingFont.setPointSize(19)
-        self.headingFont.setBold(True)
-        self.headingFont.setUnderline(False)
-        self.headingFont.setWeight(75)
 
     def initializeUI(self):
         # Initializing Buttons
