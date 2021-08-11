@@ -41,17 +41,11 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 [Files]
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Files\*"; DestDir: "{app}\Files"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Random Password Generator.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Include\*"; DestDir: "{app}\Include"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\PyQt5\*"; DestDir: "{app}\PyQt5"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_asyncio.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_bz2.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_ctypes.pyd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_decimal.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_hashlib.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_lzma.pyd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_multiprocessing.pyd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_overlapped.pyd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_queue.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_socket.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\_ssl.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\api-ms-win-core-console-l1-1-0.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -94,17 +88,12 @@ Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Rando
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\api-ms-win-crt-utility-l1-1-0.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\base_library.zip"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\d3dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\libcrypto-1_1-x64.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\libffi-7.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\libssl-1_1-x64.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\MSVCP140.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\MSVCP140_1.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\pyexpat.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\python3.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\python39.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Qt5DBus.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -120,7 +109,6 @@ Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Rando
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\ucrtbase.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\unicodedata.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\VCRUNTIME140.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\abled\Desktop\Random-Password-Generator-GUI\Scripts\dist\Random Password Generator\VCRUNTIME140_1.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

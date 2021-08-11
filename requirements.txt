@@ -1,3 +1,0 @@
-pyperclip
-PyQt5
-pyinstaller
