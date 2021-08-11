@@ -19,7 +19,9 @@ Random Password Generator with GUI and many features.
 	Install Python atleast 3.9
 	Clone this repository by using `git clone https://github.com/Abled-Taha/Random-Password-Generator-GUI.git`
 	Open CMD in the directory and run this command `pip install -r requirements.txt`
-	Now run the Main File by `python Windows.py`
+	Now run the command `pyinstaller "Random Password Generator.spec"`
+	Now move the directory Random Password Generator located under dist to your desired location. (It is your application directory.)
+	Now find the Random Password Generator.exe file in the application directory and make it's shortcut to your Desktop or somewhere.
 	
 ### Second (The Easy Way)
 	Downloadd the Installer and install from there.
