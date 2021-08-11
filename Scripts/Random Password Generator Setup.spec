@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['Windows.py'],
-             pathex=['C:\\Users\\abled\\Desktop\\Random-Password-Generator-GUI\\Scripts'],
+             pathex=[''],
              binaries=[],
              datas=[],
              hiddenimports=[],
