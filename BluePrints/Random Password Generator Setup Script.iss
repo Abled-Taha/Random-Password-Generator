@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Random Password Generator"
-#define MyAppVersion "1.1"
+#define MyAppVersion "2.0"
 #define MyAppPublisher "Abled Inc."
 #define MyAppURL "https://github.com/Abled-Taha/Random-Password-Generator-GUI"
 #define MyAppExeName "Random Password Generator.exe"
