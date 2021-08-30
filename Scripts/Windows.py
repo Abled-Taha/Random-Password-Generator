@@ -46,6 +46,9 @@ class SignInApp(QMainWindow):
         self.signUpButton = QPushButton(self)
         self.signUpButton.clicked.connect(self.runSignUpApp)
 
+        self.deleteUserButton = QPushButton(self)
+        self.deleteUserButton.clicked.connect(self.runDeleteUserApp)
+
         # Customizing Labels
         self.mainLabel.setGeometry(20, 10, 251, 41) # x, y, width, height
         self.mainLabel.setText("Sign In | Log In")
@@ -77,6 +80,11 @@ class SignInApp(QMainWindow):
         self.signUpButton.setCursor(Qt.PointingHandCursor)
         self.signUpButton.show()
 
+        self.deleteUserButton.setGeometry(180, 310, 91, 21) # x, y, width, height
+        self.deleteUserButton.setText("Delete User")
+        self.deleteUserButton.setCursor(Qt.PointingHandCursor)
+        self.deleteUserButton.show()
+
     def getData(self):
         self.username = self.usernameLineEdit.text()
         self.password = self.passwordLineEdit.text()
@@ -105,6 +113,11 @@ class SignInApp(QMainWindow):
     def runSignUpApp(self):
         self.close()
         self.MainWindow = SignUpApp()
+        self.MainWindow.show()
+
+    def runDeleteUserApp(self):
+        self.close()
+        self.MainWindow = DeleteUserApp()
         self.MainWindow.show()
 
     def keyPressEvent(self, e):     
@@ -532,6 +545,93 @@ class DeleteApp(QMainWindow):
             self.back()
         if e.key() == Qt.Key_Return:
             self.getData()
+
+class DeleteUserApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.initializeWindow()
+        self.initializeUI()
+    
+    def initializeWindow(self):
+        # Initializing Main Window
+        self.setWindowTitle("Random Password Generator - Delete User")
+        self.setWindowIcon(QIcon("Files/icon.png"))
+        self.resize(271, 364) #Width, Height
+
+        # Initializing Icon
+        self.Icon = QIcon()
+        self.Icon.addPixmap(QPixmap("Files/icon.png"), QIcon.Mode.Normal, QIcon.State.Off)
+
+    def initializeUI(self):
+        # Initializing Buttons
+        self.deleteButton = QPushButton(self)
+        self.deleteButton.clicked.connect(self.getData)
+
+        self.backButton = QPushButton(self)
+        self.backButton.clicked.connect(self.back)
+
+        # Initializing Text Fields
+        self.nameOfUserTextField = QLineEdit(self)
+        self.passwordTextField = QLineEdit(self)
+
+        # Customizing Buttons
+        self.deleteButton.setGeometry(85, 200, 100, 30) # x, y, width, height
+        self.deleteButton.setText("Delete User")
+        self.deleteButton.setCursor(Qt.PointingHandCursor)
+        self.deleteButton.show()
+
+        self.backButton.setGeometry(0, 340, 61, 21) # x, y, width, height
+        self.backButton.setText("Go Back")
+        self.backButton.setCursor(Qt.PointingHandCursor)
+        self.backButton.show()
+
+        # Customizing Text Fields
+        self.nameOfUserTextField.setGeometry(35, 80, 200, 30) # x, y, width, height
+        self.nameOfUserTextField.setPlaceholderText("Name Of User?")
+        self.nameOfUserTextField.show()
+
+        self.passwordTextField.setGeometry(35, 115, 200, 30) # x, y, width, height
+        self.passwordTextField.setPlaceholderText("Password?")
+        self.passwordTextField.show()
+
+    def done(self):
+        self.msgBox = QMessageBox(self)
+        self.msgBox.setIcon(QMessageBox.Icon.Information)
+        self.msgBox.resize(50, 50) # width, height
+        self.msgBox.setWindowTitle("Done!")
+        self.msgBox.setText("The User has been deleted.")
+        self.msgBox.setStandardButtons(QMessageBox.Ok)
+        self.msgBox.exec()
+
+    def incorrectInfo(self):
+        self.msgBox = QMessageBox(self)
+        self.msgBox.setIcon(QMessageBox.Icon.Critical)
+        self.msgBox.resize(50, 50) # width, height
+        self.msgBox.setWindowTitle("Error!")
+        self.msgBox.setText("Please provide valid Information.")
+        self.msgBox.setStandardButtons(QMessageBox.Ok)
+        self.msgBox.exec()
+
+    def getData(self):
+        self.nameOfUserTextFieldText = self.nameOfUserTextField.text()
+        self.passwordTextFieldText = self.passwordTextField.text()
+        isDone = Functions.deleteUser(self.nameOfUserTextFieldText, self.passwordTextFieldText)
+        if isDone:
+            self.done()
+        else:
+            self.incorrectInfo()
+
+    def back(self):
+        self.close()
+        self.MainWindow = SignInApp()
+        self.MainWindow.show()
+
+    def keyPressEvent(self, e):     
+        if e.key() == Qt.Key_Escape:
+            self.back()
+        if e.key() == Qt.Key_Return:
+            self.getData()
+
 
 
 

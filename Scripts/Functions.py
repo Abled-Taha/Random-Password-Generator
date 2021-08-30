@@ -106,3 +106,20 @@ def deletePassword(Name, username):
     os.chdir("../..")
 
     return True
+
+def deleteUser(username, password):
+    if os.path.isfile(f"Files/Accounts/{username}.json"):
+        encryptedPassword = Encryptor.Encrypt(password)
+        os.chdir("Files/Accounts")
+        with open(f"{username}.json") as File:
+            data = json.load(File)
+        os.chdir("../..")
+    else:
+        return False
+    if data["MainPassword"] == encryptedPassword:
+        os.chdir("Files/Accounts")
+        os.remove(f"{username}.json")
+        os.chdir("../..")
+        return True
+    else:
+        return False
