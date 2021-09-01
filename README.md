@@ -105,7 +105,7 @@ This project is supported to Windows and Linux, however, for Windows I do have o
 #### Windows
 
 ##### Automatic Installation
-1. Download the installer from <a href='https://github.com/Abled-Taha/Random-Password-Generator-GUI/releases/tag/v.1.1'>here</a> and proceed from there.
+1. Download the installer from <a href='https://github.com/Abled-Taha/Random-Password-Generator-GUI/releases/tag/v.2.0'>here</a> and proceed from there.
 
 ##### Manual Building and Installation
 1. Open CMD and change to your desired directory
