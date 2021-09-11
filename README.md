@@ -16,7 +16,7 @@
   <h3 align="center">Random-Password-Generator</h3>
 
   <p align="center">
-    An awesome Application to randomly generate your passwords and manage them!
+    An awesome application to randomly generate your passwords and manage them!
     <br />
     ·
     <a href="https://github.com/Abled-Taha/Random-Password-Generator-GUI/issues">Report Bug</a>
@@ -41,8 +41,22 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+      <li><a href="#pre-requisites">Pre-requisites</a></li>
+        <ul>
+        <li><a href="#windows-pre-requisites">Windows Pre-requisites</a></li>
+        <li><a href="#debian-pre-requisites">Debian Pre-requisites</a></li>
+        <li><a href="#arch-pre-requisites">Arch Pre-requisites</a></li>
+        </ul>
         <li><a href="#installation">Installation</a></li>
+        <ul>
+        <li><a href="#windows-installation">Windows Installation</a></li>
+        <ul>
+        <li><a href="#automatic-installation">Automatic Installation</a></li>
+        <li><a href="#manual-building-and-installation">Manual Building And Installation</a></li>
+        </ul>
+        <li><a href="#debian-installation">Debian Installation</a></li>
+        <li><a href="#arch-installation">Arch Installation</a></li>
+        </ul>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -66,7 +80,8 @@ There are many great Password Managers available out-there having more features 
 * Password Verification In Creation and Logging
 * Random Password Generation
 * Creation and Deletion of Generated Passwords
-* Encryption of Passwords beforing storing
+* Encryption of Passwords before storing
+* One Master Password to protect all passwords
 
 ### Built With
 
@@ -78,9 +93,9 @@ There are many great Password Managers available out-there having more features 
 
 This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself.
 
-### Prerequisites
+### Pre-requisites
 
-#### Windows
+#### Windows Pre-requisites
 * Python 3
   ```sh
   Download and install from https://www.python.org/
@@ -90,7 +105,7 @@ This project is supported to Windows and Linux, however, for Windows I do have o
   Download and install from https://git-scm.com/
   ```
 
-#### Linux
+#### Debian Pre-requisites
 * Python 3
   ```sh
   sudo apt install python3
@@ -100,9 +115,18 @@ This project is supported to Windows and Linux, however, for Windows I do have o
   sudo apt install git
   ```
 
+#### Arch Pre-requisites
+* Python 3
+  ```sh
+  sudo pacman -S python3
+  ```
+* Git
+  ```sh
+  sudo pacman -S git
+  ```
 ### Installation
 
-#### Windows
+#### Windows Installation
 
 ##### Automatic Installation
 1. Download the installer from <a href='https://github.com/Abled-Taha/Random-Password-Generator-GUI/releases/tag/v.2.0'>here</a> and proceed from there.
@@ -128,7 +152,28 @@ This project is supported to Windows and Linux, however, for Windows I do have o
 6. Move the directory "Random Password Generator" located under "dist" directory to your desired location. (It is your application directory.)
 7. Find the "Random Password Generator.exe" file in the application directory and make it's shortcut to your Desktop or somewhere.
 
-#### Linux
+#### Debian Installation
+1. Open Terminal and change to your desired directory
+2. Clone this repository
+   ```sh
+   git clone https://github.com/Abled-Taha/Random-Password-Generator-GUI
+   ```
+3. Change directory
+   ```sh
+   cd Random-Password-Generator-GUI
+   ```
+4. Install required packages
+   ```sh
+   pip3 install -r requirements.txt
+   ```
+5. Build the App
+   ```sh
+   pyinstaller "Random Password Generator.spec"
+   ```
+6. Move the directory "Random Password Generator" located under "dist" directory to your desired location. (It is your application directory.)
+7. Find the "Random Password Generator" file in the application directory which is the main file to execute.
+
+#### Arch Installation
 1. Open Terminal and change to your desired directory
 2. Clone this repository
    ```sh
@@ -154,7 +199,7 @@ This project is supported to Windows and Linux, however, for Windows I do have o
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This product should only be used as an exploration or educational project and is not recommended to be used a a primary Password Manager as it lacks many essential features like storing your password and user accounts in database rather it stores all the data on your local machine.
+This product should only be used as an **exploration or educational** project and is not recommended to be used as a primary Password Manager as it lacks many essential features like, storing your password and user accounts in database, rather it stores all the data on your **local machine**.
 
 <!-- ROADMAP -->
 ## Roadmap
