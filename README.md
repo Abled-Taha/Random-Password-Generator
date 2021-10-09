@@ -41,21 +41,16 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-      <li><a href="#pre-requisites">Pre-requisites</a></li>
-        <ul>
-        <li><a href="#windows-pre-requisites">Windows Pre-requisites</a></li>
-        <li><a href="#debian-pre-requisites">Debian Pre-requisites</a></li>
-        <li><a href="#arch-pre-requisites">Arch Pre-requisites</a></li>
-        </ul>
         <li><a href="#installation">Installation</a></li>
         <ul>
         <li><a href="#windows-installation">Windows Installation</a></li>
-        <ul>
-        <li><a href="#automatic-installation">Automatic Installation</a></li>
-        <li><a href="#manual-building-and-installation">Manual Building And Installation</a></li>
         </ul>
-        <li><a href="#debian-installation">Debian Installation</a></li>
-        <li><a href="#arch-installation">Arch Installation</a></li>
+        <li><a href="#building">Building</a></li>
+        <ul>
+        <li><a href="#windows-building">Windows Building</a></li>
+        </ul>
+        <ul>
+        <li><a href="#linux-building">Linux Building</a></li>
         </ul>
       </ul>
     </li>
@@ -93,45 +88,14 @@ There are many great Password Managers available out-there having more features 
 
 This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself.
 
-### Pre-requisites
-
-#### Windows Pre-requisites
-* Python 3
-  ```sh
-  Download and install from https://www.python.org/
-  ```
-* Git (If you want to build it yourself)
-  ```sh
-  Download and install from https://git-scm.com/
-  ```
-
-#### Debian Pre-requisites
-* Python 3
-  ```sh
-  sudo apt install python3
-  ```
-* Git
-  ```sh
-  sudo apt install git
-  ```
-
-#### Arch Pre-requisites
-* Python 3
-  ```sh
-  sudo pacman -S python3
-  ```
-* Git
-  ```sh
-  sudo pacman -S git
-  ```
 ### Installation
 
 #### Windows Installation
 
-##### Automatic Installation
 1. Download the installer from <a href='https://github.com/Abled-Taha/Random-Password-Generator-GUI/releases/tag/v.2.0'>here</a> and proceed from there.
 
-##### Manual Building and Installation
+### Building
+#### Windows Building
 1. Open CMD and change to your desired directory
 2. Clone this repository
    ```sh
@@ -152,7 +116,7 @@ This project is supported to Windows and Linux, however, for Windows I do have o
 6. Move the directory "Random Password Generator" located under "dist" directory to your desired location. (It is your application directory.)
 7. Find the "Random Password Generator.exe" file in the application directory and make it's shortcut to your Desktop or somewhere.
 
-#### Debian Installation
+#### Linux Building
 1. Open Terminal and change to your desired directory
 2. Clone this repository
    ```sh
@@ -172,28 +136,6 @@ This project is supported to Windows and Linux, however, for Windows I do have o
    ```
 6. Move the directory "Random Password Generator" located under "dist" directory to your desired location. (It is your application directory.)
 7. Find the "Random Password Generator" file in the application directory which is the main file to execute.
-
-#### Arch Installation
-1. Open Terminal and change to your desired directory
-2. Clone this repository
-   ```sh
-   git clone https://github.com/Abled-Taha/Random-Password-Generator-GUI
-   ```
-3. Change directory
-   ```sh
-   cd Random-Password-Generator-GUI
-   ```
-4. Install required packages
-   ```sh
-   pip3 install -r requirements.txt
-   ```
-5. Build the App
-   ```sh
-   pyinstaller "Random Password Generator.spec"
-   ```
-6. Move the directory "Random Password Generator" located under "dist" directory to your desired location. (It is your application directory.)
-7. Find the "Random Password Generator" file in the application directory which is the main file to execute.
-
 
 
 <!-- USAGE EXAMPLES -->
