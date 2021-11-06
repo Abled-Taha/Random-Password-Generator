@@ -432,8 +432,11 @@ class CreateNewApp(QMainWindow):
         self.isSmallChecked = self.smallLettersCheckBox.isChecked()
         self.isNumbersChecked = self.numbersCheckBox.isChecked()
         self.isSymbolsChecked = self.symbolsCheckBox.isChecked()
-        Functions.createPassword(self.nameOfPasswordFieldText, self.numberOfCharactersFieldText, self.isCapitalChecked, self.isSmallChecked, self.isNumbersChecked, self.isSymbolsChecked, username)
-        self.done()
+        allDone = Functions.createPassword(self.nameOfPasswordFieldText, self.numberOfCharactersFieldText, self.isCapitalChecked, self.isSmallChecked, self.isNumbersChecked, self.isSymbolsChecked, username)
+        if allDone == True:
+            self.done()
+        else:
+            return self.incorrectInfo()
 
     def back(self):
         self.close()

@@ -77,17 +77,21 @@ def getPass(objectName, username):
 
 def createPassword(Name, Characters, Capital, Small, Numbers, Symbols, username):
     Password = RPG.generateNewPassword(Characters, Capital, Small, Numbers, Symbols)
-    EncryptedPassword = Encryptor.Encrypt(Password)
-    os.chdir("Files/Accounts")
+    if Password != False:
+        EncryptedPassword = Encryptor.Encrypt(Password)
+        os.chdir("Files/Accounts")
 
-    with open(f"{username}.json") as File:
-        data = json.load(File)
-    data[f"{Name}"] = EncryptedPassword
-    os.remove(f"{username}.json")
+        with open(f"{username}.json") as File:
+            data = json.load(File)
+        data[f"{Name}"] = EncryptedPassword
+        os.remove(f"{username}.json")
 
-    with open(f"{username}.json", "a+") as File:
-        json.dump(data, File)
-    os.chdir("../..")
+        with open(f"{username}.json", "a+") as File:
+            json.dump(data, File)
+        os.chdir("../..")
+        return True
+    else:
+        return False
 
 def deletePassword(Name, username):
     os.chdir("Files/Accounts")
