@@ -73,8 +73,11 @@ def createPassword(Name, Characters, Capital, Small, Numbers, Symbols, email):
     usercredentials = credentials.find_one({"email":email})
     passwords = usercredentials["passwords"]
     password = RPG.generateNewPassword(Characters, Capital, Small, Numbers, Symbols)
-    passwords[f"{Name}"] = Encryptor.Encrypt(password)
-    db.credentials.update_one({"_id":usercredentials["_id"]}, {"$set":{"passwords":passwords}})
+    if password != False:
+        passwords[f"{Name}"] = Encryptor.Encrypt(password)
+        db.credentials.update_one({"_id":usercredentials["_id"]}, {"$set":{"passwords":passwords}})
+    else:
+        return False
     
 def deletePassword(Name, email):
     usercredentials = credentials.find_one({"email":email})
