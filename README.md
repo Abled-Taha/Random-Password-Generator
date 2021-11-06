@@ -86,7 +86,7 @@ There are many great Password Managers available out-there having more features 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself.
+This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself. Moreover, The releases are only for the main branch of the project if you want to try another branch, you need to build it yourself.
 
 ### Installation
 
