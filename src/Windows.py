@@ -506,7 +506,7 @@ class DeleteApp(QMainWindow):
 
         # Customizing Text Fields
         self.nameOfPasswordTextField.setGeometry(35, 80, 200, 30) # x, y, width, height
-        self.nameOfPasswordTextField.setPlaceholderText("Name Of Password?")
+        self.nameOfPasswordTextField.setPlaceholderText("Password")
         self.nameOfPasswordTextField.show()
 
     def getData(self):
@@ -587,11 +587,11 @@ class DeleteUserApp(QMainWindow):
 
         # Customizing Text Fields
         self.nameOfUserTextField.setGeometry(35, 80, 200, 30) # x, y, width, height
-        self.nameOfUserTextField.setPlaceholderText("Name Of User?")
+        self.nameOfUserTextField.setPlaceholderText("Email")
         self.nameOfUserTextField.show()
 
         self.passwordTextField.setGeometry(35, 115, 200, 30) # x, y, width, height
-        self.passwordTextField.setPlaceholderText("Password?")
+        self.passwordTextField.setPlaceholderText("Password")
         self.passwordTextField.show()
 
     def done(self):
@@ -639,11 +639,8 @@ class DeleteUserApp(QMainWindow):
 app = QApplication(sys.argv)
 app.setStyleSheet(open("Files/style.css").read())
 
-if os.path.isdir("Files/Accounts") == True:
-    # Defining Main Window
-    MainWindow = SignInApp()
-else:
-    MainWindow = SignUpApp()
+# Defining Main Window
+MainWindow = SignInApp()
 
 # Running Main Window
 MainWindow.show()

@@ -17,42 +17,48 @@ def validateSignIn(email, password):
         dbpassword = user["password"]
     except:
         return False
-    if password == dbpassword:
+    if password == (Encryptor.Decrypt(dbpassword)):
         return True
     else:
         return False
 
 def validateSignUp(email, password, confirmPassword):
+    temp = 0
     if password == confirmPassword:
-        pass
+        temp += 1
     if email != "":
-        pass
+        temp += 1
     if email.__contains__('@'):
-        pass
+        temp += 1
+    if temp == 3:
+        allDone = createAccount(email, password)
     else:
         return False
-    allDone = createAccount(email, password)
 
     return allDone
 
 def createAccount(email, password):
     user = users.find_one({"email":email})
     if user == None:
-        db.users.insert_one({"email":email, "password":password})
+        db.users.insert_one({"email":email, "password":Encryptor.Encrypt(password)})
+        db.credentials.insert_one({'email':email, 'passwords':{}})
         return True
     else:
         return False
 
 def Details(email):
     # Returning Key Count
-    usercredentials = credentials.find_one({"email":email})
-    passwords = usercredentials["passwords"]
-    keyCount = len(passwords.keys())
+    try:
+        usercredentials = credentials.find_one({"email":email})
+        passwords = usercredentials["passwords"]
+        keyCount = len(passwords.keys())
+        keyList = []
+        for key, value in passwords.items():
+            keyList.append(key)
 
-    # Returning Password Name
-    keyList = []
-    for key, value in passwords.items():
-        keyList.append(key)
+    except:
+        keyCount = 0
+        keyList = []
 
     return keyCount, keyList
 
@@ -61,17 +67,15 @@ def getPass(objectName, email):
     passwords = usercredentials["passwords"]
     password = passwords[f"{objectName}"]
 
-    return password
+    return Encryptor.Decrypt(password)
 
 def createPassword(Name, Characters, Capital, Small, Numbers, Symbols, email):
     usercredentials = credentials.find_one({"email":email})
     passwords = usercredentials["passwords"]
     password = RPG.generateNewPassword(Characters, Capital, Small, Numbers, Symbols)
-    os.chdir("Files/Accounts")
-
-    passwords[f"{Name}"] = password
+    passwords[f"{Name}"] = Encryptor.Encrypt(password)
     db.credentials.update_one({"_id":usercredentials["_id"]}, {"$set":{"passwords":passwords}})
-
+    
 def deletePassword(Name, email):
     usercredentials = credentials.find_one({"email":email})
     passwords = usercredentials["passwords"]
@@ -88,8 +92,9 @@ def deleteUser(email, password):
         dbpassword = user["password"]
     except:
         return False
-    if password == dbpassword:
+    if password == Encryptor.Decrypt(dbpassword):
         db.users.delete_one({"_id":user["_id"]})
+        db.credentials.delete_one({"email":email})
         return True
     else:
         return False
