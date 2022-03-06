@@ -8,6 +8,7 @@
 
 <!-- PROJECT LOGO -->
 <br />
+<h1 align="center">(Depricated)</h1>
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="src/Files/icon.png" alt="Logo" width="80" height="80">
