@@ -8,9 +8,11 @@
 
 <!-- PROJECT LOGO -->
 <br />
+<h1 align="center">(Depricated)</h1>
+<h6 align="center">New Version: https://github.com/Abled-Taha/UPM</h6>
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="Scripts/Files/icon.png" alt="Logo" width="80" height="80">
+    <img src="src/Files/icon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Random-Password-Generator</h3>
@@ -86,7 +88,7 @@ There are many great Password Managers available out-there having more features 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself.
+This project is supported to Windows and Linux, however, for Windows I do have official releases but as for Linux there are no releases, you have to build it yourself. Moreover, The releases are only for the main branch of the project if you want to try another branch, you need to build it yourself.
 
 ### Installation
 
