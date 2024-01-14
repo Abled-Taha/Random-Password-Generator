@@ -36,7 +36,7 @@ class SignInApp(QMainWindow):
         self.signUpLabel = QLabel(self)
 
         # Initializing Text Fields
-        self.usernameLineEdit = QLineEdit(self)
+        self.emailLineEdit = QLineEdit(self)
         self.passwordLineEdit = QLineEdit(self)
 
         # Initializing Buttons
@@ -60,9 +60,9 @@ class SignInApp(QMainWindow):
         self.signUpLabel.show()
 
         # Customizing Text Fields
-        self.usernameLineEdit.setGeometry(10, 170, 251, 23) # x, y, width, height
-        self.usernameLineEdit.setPlaceholderText("Username")
-        self.usernameLineEdit.show()
+        self.emailLineEdit.setGeometry(10, 170, 251, 23) # x, y, width, height
+        self.emailLineEdit.setPlaceholderText("Email")
+        self.emailLineEdit.show()
 
         self.passwordLineEdit.setGeometry(10, 210, 251, 23) # x, y, width, height
         self.passwordLineEdit.setPlaceholderText("Password")
@@ -86,9 +86,9 @@ class SignInApp(QMainWindow):
         self.deleteUserButton.show()
 
     def getData(self):
-        self.username = self.usernameLineEdit.text()
+        self.email = self.emailLineEdit.text()
         self.password = self.passwordLineEdit.text()
-        self.isCorrect = Functions.validateSignIn(self.username, self.password)
+        self.isCorrect = Functions.validateSignIn(self.email, self.password)
         if self.isCorrect == True:
             self.runMainApp()
         else:
@@ -105,8 +105,8 @@ class SignInApp(QMainWindow):
 
     def runMainApp(self):
         self.close()
-        global username
-        username = self.username
+        global email
+        email = self.email
         self.MainWindow = MainApp()
         self.MainWindow.show()
 
@@ -158,7 +158,7 @@ class SignUpApp(QMainWindow):
         self.signInLabel = QLabel(self)
 
         # Initializing Text Fields
-        self.usernameLineEdit = QLineEdit(self)
+        self.emailLineEdit = QLineEdit(self)
         self.passwordLineEdit = QLineEdit(self)
         self.confirmPasswordLineEdit = QLineEdit(self)
 
@@ -191,9 +191,9 @@ class SignUpApp(QMainWindow):
         self.signInButton.show()
 
         # Customizing Text Fields
-        self.usernameLineEdit.setGeometry(10, 130, 251, 23) # x, y, width, height
-        self.usernameLineEdit.setPlaceholderText("Username")
-        self.usernameLineEdit.show()
+        self.emailLineEdit.setGeometry(10, 130, 251, 23) # x, y, width, height
+        self.emailLineEdit.setPlaceholderText("Email")
+        self.emailLineEdit.show()
 
         self.passwordLineEdit.setGeometry(10, 170, 251, 23) # x, y, width, height
         self.passwordLineEdit.setPlaceholderText("Password")
@@ -206,10 +206,10 @@ class SignUpApp(QMainWindow):
         self.confirmPasswordLineEdit.show()
 
     def getData(self):
-        self.username = self.usernameLineEdit.text()
+        self.email = self.emailLineEdit.text()
         self.password = self.passwordLineEdit.text()
         self.confirmPassword = self.confirmPasswordLineEdit.text()
-        self.isCorrect = Functions.validateSignUp(self.username, self.password, self.confirmPassword)
+        self.isCorrect = Functions.validateSignUp(self.email, self.password, self.confirmPassword)
         if self.isCorrect == True:
             self.correctInfo()
         else:
@@ -229,7 +229,7 @@ class SignUpApp(QMainWindow):
         self.msgBox.setIcon(QMessageBox.Icon.Critical)
         self.msgBox.resize(50, 50) # width, height
         self.msgBox.setWindowTitle("Error!")
-        self.msgBox.setText("Please provide valid Information and confirm the password fields. Otherwise there is already an account with this username, try logging in.")
+        self.msgBox.setText("Please provide valid Information and confirm the password fields. Otherwise there is already an account with this email, try logging in.")
         self.msgBox.setStandardButtons(QMessageBox.Ok)
         self.msgBox.exec()
 
@@ -304,7 +304,7 @@ class MainApp(QMainWindow):
 
     def initializeUI(self):
         # Initializing Password Buttons
-        self.keyCount, self.keyList = Functions.Details(username)
+        self.keyCount, self.keyList = Functions.Details(email)
         for i in range(0, self.keyCount):
             object = QPushButton()
             object.clicked.connect(self.passwordButtonClicked)
@@ -327,7 +327,7 @@ class MainApp(QMainWindow):
 
     def passwordButtonClicked(self):
         object = self.sender()
-        password = Functions.getPass(object.objectName(), username)
+        password = Functions.getPass(object.objectName(), email)
         pyperclip.copy(password)
         self.copied()
 
@@ -432,8 +432,8 @@ class CreateNewApp(QMainWindow):
         self.isSmallChecked = self.smallLettersCheckBox.isChecked()
         self.isNumbersChecked = self.numbersCheckBox.isChecked()
         self.isSymbolsChecked = self.symbolsCheckBox.isChecked()
-        allDone = Functions.createPassword(self.nameOfPasswordFieldText, self.numberOfCharactersFieldText, self.isCapitalChecked, self.isSmallChecked, self.isNumbersChecked, self.isSymbolsChecked, username)
-        if allDone == True:
+        allDone = Functions.createPassword(self.nameOfPasswordFieldText, self.numberOfCharactersFieldText, self.isCapitalChecked, self.isSmallChecked, self.isNumbersChecked, self.isSymbolsChecked, email)
+        if allDone != False:
             self.done()
         else:
             return self.incorrectInfo()
@@ -509,12 +509,12 @@ class DeleteApp(QMainWindow):
 
         # Customizing Text Fields
         self.nameOfPasswordTextField.setGeometry(35, 80, 200, 30) # x, y, width, height
-        self.nameOfPasswordTextField.setPlaceholderText("Name Of Password?")
+        self.nameOfPasswordTextField.setPlaceholderText("Password")
         self.nameOfPasswordTextField.show()
 
     def getData(self):
         self.nameOfPasswordTextFieldText = self.nameOfPasswordTextField.text()
-        isDone = Functions.deletePassword(self.nameOfPasswordTextFieldText, username)
+        isDone = Functions.deletePassword(self.nameOfPasswordTextFieldText, email)
         if isDone:
             self.done()
         else:
@@ -590,11 +590,11 @@ class DeleteUserApp(QMainWindow):
 
         # Customizing Text Fields
         self.nameOfUserTextField.setGeometry(35, 80, 200, 30) # x, y, width, height
-        self.nameOfUserTextField.setPlaceholderText("Name Of User?")
+        self.nameOfUserTextField.setPlaceholderText("Email")
         self.nameOfUserTextField.show()
 
         self.passwordTextField.setGeometry(35, 115, 200, 30) # x, y, width, height
-        self.passwordTextField.setPlaceholderText("Password?")
+        self.passwordTextField.setPlaceholderText("Password")
         self.passwordTextField.show()
 
     def done(self):
@@ -642,11 +642,8 @@ class DeleteUserApp(QMainWindow):
 app = QApplication(sys.argv)
 app.setStyleSheet(open("Files/style.css").read())
 
-if os.path.isdir("Files/Accounts") == True:
-    # Defining Main Window
-    MainWindow = SignInApp()
-else:
-    MainWindow = SignUpApp()
+# Defining Main Window
+MainWindow = SignInApp()
 
 # Running Main Window
 MainWindow.show()

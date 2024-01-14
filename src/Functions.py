@@ -2,128 +2,102 @@ import os
 import json
 import Encryptor
 import RandomPasswordGenerator as RPG
+import pymongo
 
-def validateSignIn(username, password):
-    if os.path.isfile(f"Files/Accounts/{username}.json"):
-        encryptedPassword = Encryptor.Encrypt(password)
-        os.chdir("Files/Accounts")
-        with open(f"{username}.json") as File:
-            data = json.load(File)
-        os.chdir("../..")
-    else:
+url = "localhost"
+port = 27017
+client = pymongo.MongoClient(url, port)
+db = client.RandomPasswordGenerator
+users = db.users
+credentials = db.credentials
+
+def validateSignIn(email, password):
+    try:
+        user = users.find_one({"email":email})
+        dbpassword = user["password"]
+    except:
         return False
-    if data["MainPassword"] == encryptedPassword:
-           return True
-    else:
-        return False
-
-def validateSignUp(username, password, confirmPassword):
-    if password == confirmPassword:
-        pass
-    if username != "":
-        pass
-    else:
-        return False
-    allDone = createAccount(username, password)
-
-    return allDone
-
-def createAccount(username, password):
-    if os.path.isdir("Files/Accounts"):
-        if os.path.isfile(f"Files/Accounts/{username}.json"):
-            return False
-    else:
-        os.mkdir("Files/Accounts")
-
-    encryptedPassword = Encryptor.Encrypt(password)
-    os.chdir("Files/Accounts")
-    dict = {"MainPassword" : f"{encryptedPassword}"}
-    jsonObj = json.dumps(dict, indent=1)
-    with open(f"{username}.json", "a+") as File:
-        File.write(jsonObj)
-    os.chdir("../..")
-    return True
-
-def Details(username):
-    # Returning Key Count
-    os.chdir("Files/Accounts")
-    with open(f"{username}.json") as File:
-        data = json.load(File)
-    keyCount = len(data.keys())
-    keyCount -= 1
-    os.chdir("../..")
-
-    # Returning Password Name
-    os.chdir("Files/Accounts")
-    with open(f"{username}.json") as File:
-        data = json.load(File)
-    keyList = []
-    for key, value in data.items():
-        keyList.append(key)
-    keyList.pop(0)
-    os.chdir("../..")
-
-    return keyCount, keyList
-
-def getPass(objectName, username):
-    os.chdir("Files/Accounts")
-    with open(f"{username}.json") as File:
-        data = json.load(File)
-    EncryptedPassword = data[f"{objectName}"]
-    DecryptedPassword = Encryptor.Decrypt(EncryptedPassword)
-    os.chdir("../..")
-
-    return DecryptedPassword
-
-def createPassword(Name, Characters, Capital, Small, Numbers, Symbols, username):
-    Password = RPG.generateNewPassword(Characters, Capital, Small, Numbers, Symbols)
-    if Password != False:
-        EncryptedPassword = Encryptor.Encrypt(Password)
-        os.chdir("Files/Accounts")
-
-        with open(f"{username}.json") as File:
-            data = json.load(File)
-        data[f"{Name}"] = EncryptedPassword
-        os.remove(f"{username}.json")
-
-        with open(f"{username}.json", "a+") as File:
-            json.dump(data, File)
-        os.chdir("../..")
+    if password == (Encryptor.Decrypt(dbpassword)):
         return True
     else:
         return False
 
-def deletePassword(Name, username):
-    os.chdir("Files/Accounts")
-
-    with open(f"{username}.json") as File:
-        data = json.load(File)
-    try:
-        del data[f"{Name}"]
-    except:
-        os.chdir("../..")
-        return False
-    os.remove(f"{username}.json")
-
-    with open(f"{username}.json", "a+") as File:
-        json.dump(data, File)
-    os.chdir("../..")
-
-    return True
-
-def deleteUser(username, password):
-    if os.path.isfile(f"Files/Accounts/{username}.json"):
-        encryptedPassword = Encryptor.Encrypt(password)
-        os.chdir("Files/Accounts")
-        with open(f"{username}.json") as File:
-            data = json.load(File)
-        os.chdir("../..")
+def validateSignUp(email, password, confirmPassword):
+    temp = 0
+    if password == confirmPassword:
+        temp += 1
+    if email != "":
+        temp += 1
+    if email.__contains__('@'):
+        temp += 1
+    if temp == 3:
+        allDone = createAccount(email, password)
     else:
         return False
-    if data["MainPassword"] == encryptedPassword:
-        os.chdir("Files/Accounts")
-        os.remove(f"{username}.json")
-        os.chdir("../..")
+
+    return allDone
+
+def createAccount(email, password):
+    user = users.find_one({"email":email})
+    if user == None:
+        db.users.insert_one({"email":email, "password":Encryptor.Encrypt(password)})
+        db.credentials.insert_one({'email':email, 'passwords':{}})
+        return True
+    else:
+        return False
+
+def Details(email):
+    # Returning Key Count
+    try:
+        usercredentials = credentials.find_one({"email":email})
+        passwords = usercredentials["passwords"]
+        keyCount = len(passwords.keys())
+        keyList = []
+        for key, value in passwords.items():
+            keyList.append(key)
+
+    except:
+        keyCount = 0
+        keyList = []
+
+    return keyCount, keyList
+
+def getPass(objectName, email):
+    usercredentials = credentials.find_one({"email":email})
+    passwords = usercredentials["passwords"]
+    password = passwords[f"{objectName}"]
+
+    return Encryptor.Decrypt(password)
+
+def createPassword(Name, Characters, Capital, Small, Numbers, Symbols, email):
+    usercredentials = credentials.find_one({"email":email})
+    passwords = usercredentials["passwords"]
+    password = RPG.generateNewPassword(Characters, Capital, Small, Numbers, Symbols)
+    if password != False:
+        passwords[f"{Name}"] = Encryptor.Encrypt(password)
+        db.credentials.update_one({"_id":usercredentials["_id"]}, {"$set":{"passwords":passwords}})
+    else:
+        return False
+    
+def deletePassword(Name, email):
+    usercredentials = credentials.find_one({"email":email})
+    passwords = usercredentials["passwords"]
+    try:
+        del passwords[f"{Name}"]
+        db.credentials.update_one({"_id":usercredentials["_id"]}, {"$set":{"passwords":passwords}})
+    except:
+        return False
+    return True
+
+def deleteUser(email, password):
+    try:
+        user = users.find_one({"email":email})
+        dbpassword = user["password"]
+    except:
+        return False
+    if password == Encryptor.Decrypt(dbpassword):
+        db.users.delete_one({"_id":user["_id"]})
+        db.credentials.delete_one({"email":email})
         return True
     else:
         return False
